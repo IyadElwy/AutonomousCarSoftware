@@ -19,7 +19,6 @@
     <script>
         function sendCommand(command) {
             $.get('/', { command: command });
-            
         }
         function keyPress(event) {
             code = event.keyCode;
@@ -55,27 +54,26 @@
     <table border="1" width="100%">
         <col style="width:40%">
         <col style="width:30%">
+        <tbody>
+            <tr>
+                <td class="controls" onClick="sendCommand('f');">F</td>
+            </tr>
+            <tr>
+                <td class="controls" onClick="sendCommand('b');">B</td>
+                <td>
+                    <table align="center">
+			<tr>
+			    <td  class="controls" onClick="sendCommand('s');">S</td>	
+                        <tr>
+                            <td class="controls" onClick="sendCommand('l');">L</td>
+                            <td class="controls" onClick="sendCommand('r');">R</td>
 
-        <tr>
-            <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('f');">F</td>
-            <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('s');">Change Mode</td>
-        </tr>
-        <tr>
-            <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('b');">B</td>
-            <td>
-                <table align="center">
-                    <tr>
-                        <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('l');">L</td>
-                        <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('r');">R</td>
+                        </tr>
 
-                    </tr>
-
-                </table>
-            </td>
-        </tr>
-
-
-
+                    </table>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </body>
 
