@@ -36,3 +36,6 @@ class MotorDriver:
         GPIO.output(self.In2, GPIO.LOW)
         self.pwm.ChangeDutyCycle(0)
         sleep(slp)
+        
+    def get_current_state(self):
+        return GPIO.input(self.In1), GPIO.input(self.In2)
