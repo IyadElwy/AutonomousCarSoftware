@@ -18,18 +18,20 @@ def index():
         f_b_motor.backward(f_b_speed, 0)
         
     elif cmd == 'r':
-        l_r_motor.forward(f_b_speed, 0)
-        
-            
+        l_r_motor.forward(l_r_speed, 0)
+              
     elif cmd == 'l':
-        l_r_motor.backward(f_b_speed, 0)
+        l_r_motor.backward(l_r_speed, 0)
         
-                    
     elif cmd == 's_fb':
         f_b_motor.stop(0)
 
     elif cmd == 's_lr':
         l_r_motor.stop(0)
+
+    elif cmd == 's':
+        l_r_motor.stop(0)
+        f_b_motor.stop(0)
 
     return template('home.tpl')
 
@@ -37,4 +39,3 @@ def index():
 
 if __name__ == '__main__':
     run(host='0.0.0.0', port=80)
-
