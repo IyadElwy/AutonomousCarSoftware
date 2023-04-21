@@ -21,9 +21,21 @@
 
     <script>
         function sendCommand(command) {
+            if (command == "change_mode") {
+                var mode = $("change_mode_input").text();
+                if (mode == "DRIVING") {
+                    $("change_mode_input").text("TRAINING");
+                } else if (mode == "TRAINING") {
+                    $("change_mode_input").text("AI");
+                } else if (mode == "AI") {
+                    $("change_mode_input").text("DRIVING");
+                }
+            }
+
             $.get('/', { command: command });
-                        event.preventDefault();
-                        event.returnValue = false;
+            event.preventDefault();
+            event.returnValue = false;
+
         }
         function keyPress(event) {
             code = event.keyCode;
@@ -63,7 +75,7 @@
 
         <tr>
             <td class="controls" onpointerup="sendCommand('s_fb')" onpointerdown="sendCommand('f');">F</td>
-            <td class="controls"  onpointerdown="sendCommand('s');">Change Mode</td>
+            <td class="controls" id="change_mode_input" onpointerdown="sendCommand('DRIVING');">Change Mode</td>
         </tr>
         <tr>
             <td class="controls" onpointerup="sendCommand('s_fb')" onpointerdown="sendCommand('b');">B</td>
