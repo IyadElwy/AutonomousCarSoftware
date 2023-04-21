@@ -75,12 +75,12 @@ def index():
         l_r_motor.stop(0)
         f_b_motor.stop(0)
 
-        if current_mode == 'DRIVING':
-            current_mode = modes[1]
-        elif current_mode == 'TRAINING':
-            current_mode == modes[2]
-        elif current_mode == 'AI':
-            current_mode == modes[0]
+        # if current_mode == 'DRIVING':
+        #     current_mode = modes[1]
+        # elif current_mode == 'TRAINING':
+        #     current_mode == modes[2]
+        # elif current_mode == 'AI':
+        #     current_mode == modes[0]
 
     return template('home.tpl')
 

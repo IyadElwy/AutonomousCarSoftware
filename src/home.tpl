@@ -75,7 +75,7 @@
 
         <tr>
             <td class="controls" onpointerup="sendCommand('s_fb')" onpointerdown="sendCommand('f');">F</td>
-            <td class="controls" id="change_mode_input" onpointerdown="sendCommand('DRIVING');">Change Mode</td>
+            <td class="controls" id="change_mode_input" onpointerdown="sendCommand('change_mode');">DRIVING</td>
         </tr>
         <tr>
             <td class="controls" onpointerup="sendCommand('s_fb')" onpointerdown="sendCommand('b');">B</td>
