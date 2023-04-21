@@ -1,5 +1,7 @@
 <html>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
 <head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"
         charset="utf-8"></script>
@@ -13,13 +15,15 @@
             padding: 15px;
             background-color: green;
             color: white;
+            user-select: none;
         }
     </style>
 
     <script>
         function sendCommand(command) {
-            // $.get('/', { command: command });
-            console.log(`${command} pressed`);
+            $.get('/', { command: command });
+            event.preventDefault();
+            event.returnValue = false;
         }
         function keyPress(event) {
             code = event.keyCode;
@@ -43,7 +47,8 @@
     </script>
 </head>
 
-<body>
+<body style="user-select: none;   -webkit-user-select: none;
+  -ms-user-select: none; touch-action: manipulation;">
     </br>
     </br>
     </br>
@@ -57,16 +62,16 @@
         <col style="width:30%">
 
         <tr>
-            <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('f');">F</td>
-            <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('s');">Change Mode</td>
+            <td class="controls" onpointerup="sendCommand('s_fb')" onpointerdown="sendCommand('f');">F</td>
+            <td class="controls" onpointerdown="sendCommand('s');">Change Mode</td>
         </tr>
         <tr>
-            <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('b');">B</td>
+            <td class="controls" onpointerup="sendCommand('s_fb')" onpointerdown="sendCommand('b');">B</td>
             <td>
                 <table align="center">
                     <tr>
-                        <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('l');">L</td>
-                        <td class="controls" onmouseup="sendCommand('s');" onmousedown="sendCommand('r');">R</td>
+                        <td class="controls" onpointerup="sendCommand('s_lr')" onpointerdown="sendCommand('r');">R</td>
+                        <td class="controls" onpointerup="sendCommand('s_lr')" onpointerdown="sendCommand('l');">L</td>
 
                     </tr>
 
