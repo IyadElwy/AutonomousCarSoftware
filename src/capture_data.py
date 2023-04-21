@@ -35,6 +35,7 @@ steering_data = [0, 0, 0, 0]  # f, b, r, l
 ###############################################
 
 modes = {0: 'DRIVING', 1: 'TRAINING', 2: 'AI'}
+global current_mode
 current_mode = modes[0]
 
 ###############################################
@@ -43,6 +44,7 @@ current_mode = modes[0]
 @route('/')
 def index():
     cmd = request.GET.get('command', '')
+    global current_mode
 
     if cmd == 'f':
         f_b_motor.forward(f_b_speed, 0)
@@ -75,12 +77,6 @@ def index():
         l_r_motor.stop(0)
         f_b_motor.stop(0)
 
-        # if current_mode == 'DRIVING':
-        #     current_mode = modes[1]
-        # elif current_mode == 'TRAINING':
-        #     current_mode == modes[2]
-        # elif current_mode == 'AI':
-        #     current_mode == modes[0]
 
     return template('home.tpl')
 
@@ -88,25 +84,32 @@ def index():
 #########################################################
 
 def get_new_directory_name():
-    if not os.path.isdir('../data'):
+
+    subfolder_numbers = sorted([int(f.path.split('/')[-1].split('t')[1]) for f in os.scandir('../data') if f.is_dir()])
+
+    if not os.path.isdir('../data') or len(subfolder_numbers) == 0:
+        os.mkdir('../data/t1') 
         return '../data/t1'
     else:
-        subfolders = [f.path for f in os.scandir('../data') if f.is_dir()]
-        print(subfolders)
+        os.mkdir( f'../data/t{max(subfolder_numbers)+1}') 
+        return  f'../data/t{max(subfolder_numbers)+1}'
 
 
 def capture_data():
-    get_new_directory_name()
-    if current_mode == 'TRAINING':
+    global current_mode
+    
+    if current_mode == 'DRIVING':
+        current_directory = get_new_directory_name()
+
         for i, frame in enumerate(camera.capture_continuous(raw_capture, format='rgb', use_video_port=True)):
             image = frame.array
 
-            r = [*steering_data, f'../data/t1/{i}.jpg']
+            r = [*steering_data, f'{current_directory}/{i}.jpg']
 
             img = Image.fromarray(image, "RGB")
-            img.save(f'../data/t1/{i}.jpg')
+            img.save(f'{current_directory}/{i}.jpg')
 
-            with open('../data/t1/steering.csv', 'a+') as f:
+            with open(f'{current_directory}/steering.csv', 'a+') as f:
                 writer_object = writer(f)
                 writer_object.writerow(r)
 

@@ -22,14 +22,13 @@
     <script>
         function sendCommand(command) {
             if (command == "change_mode") {
-                var mode = $("change_mode_input").text();
-                console.log(mode);
+                var mode = document.getElementById("change_mode_input").innerText;
                 if (mode == "DRIVING") {
-                    $("change_mode_input").text("TRAINING");
+                   document.getElementById("change_mode_input").innerText = "TRAINING";
                 } else if (mode == "TRAINING") {
-                    $("change_mode_input").text("AI");
+                   document.getElementById("change_mode_input").innerText = "AI";
                 } else if (mode == "AI") {
-                    $("change_mode_input").text("DRIVING");
+                    document.getElementById("change_mode_input").innerText = "DRIVING";
                 }
             }
 
@@ -38,25 +37,7 @@
             event.returnValue = false;
 
         }
-        function keyPress(event) {
-            code = event.keyCode;
-            if (code == 119) {
-                sendCommand('f');
-            }
-            else if (code == 97) {
-                sendCommand('l');
-            }
-            else if (code == 115) {
-                sendCommand('s');
-            }
-            else if (code == 100) {
-                sendCommand('r');
-            }
-            else if (code == 122) {
-                sendCommand('b');
-            }
-        }
-        $(document).keypress(keyPress);
+        
     </script>
 </head>
 
@@ -76,15 +57,15 @@
 
         <tr>
             <td class="controls" onpointerup="sendCommand('s_fb')" onpointerdown="sendCommand('f');">F</td>
-            <td class="controls" id="change_mode_input" onclick="sendCommand('change_mode');">DRIVING</td>
+            <td class="controls" id="change_mode_input">DRIVING</td>
         </tr>
         <tr>
             <td class="controls" onpointerup="sendCommand('s_fb')" onpointerdown="sendCommand('b');">B</td>
             <td>
                 <table align="center">
                     <tr>
-                        <td class="controls" onpointerup="sendCommand('s_lr')" onpointerdown="sendCommand('r');">R</td>
-                        <td class="controls" onpointerup="sendCommand('s_lr')" onpointerdown="sendCommand('l');">L</td>
+                        <td class="controls" onpointerup="sendCommand('s_lr')" onpointerdown="sendCommand('r');">L</td>
+                        <td class="controls" onpointerup="sendCommand('s_lr')" onpointerdown="sendCommand('l');">R</td>
 
                     </tr>
 
