@@ -16,12 +16,13 @@ from MotorControl.motor_controller import MotorDriver
 f_b_motor = MotorDriver(25, 23, 24)
 l_r_motor = MotorDriver(16, 20, 21)
 
-f_b_speed = 60
+f_b_speed = 45
 l_r_speed = 100
 
 ###############################################
 
 camera = PiCamera()
+camera.rotation = 180
 camera.resolution = (640, 480)
 
 raw_capture = PiRGBArray(camera, size=(640, 480))
