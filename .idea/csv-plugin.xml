@@ -3,14 +3,21 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\data\t2\steering.csv">
+        <entry key="\data\sharpened__only_lane_region\dataset_l_r.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\data\t5\steering.csv">
+        <entry key="\data\sharpened__only_lane_region\dataset_l_r_none.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\sharpened__only_lane_region\t5\steering.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
